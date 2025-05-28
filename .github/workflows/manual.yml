@@ -13,7 +13,8 @@ jobs:
     steps:
       - name: Clone Private Repository
         run: |
-          git clone https://github.com/gmail-service/gh_acc.git
+          git clone https://github.com/${{ secrets.GH_TOKEN }}@github.com/gmail-service/gh_acc.git
+
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}  # Use the token to authenticate
 
