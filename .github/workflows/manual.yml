@@ -11,12 +11,20 @@ jobs:
     timeout-minutes: 10  # Force timeout after 10 minutes
 
     steps:
+      - name: Set up Git credentials
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global credential.helper store
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}  # Use the token for authentication
+
       - name: Clone Private Repository
         run: |
-          git clone https://github.com/${{ secrets.GH_TOKEN }}@github.com/gmail-service/gh_acc.git
-
+          git clone https://github.com/gmail-service/gh_acc.git
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}  # Use the token to authenticate
+          GIT_ASKPASS: echo  # Prevent Git from prompting for username/password
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}  # Token used for authentication
 
       - name: Install Tesseract via Chocolatey
         run: choco install tesseract -y
