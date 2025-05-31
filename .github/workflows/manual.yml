@@ -37,7 +37,7 @@ jobs:
       - name: Install Python Dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install pillow faker sqlalchemy pytesseract selenium pymysql requests mechanize pycountry
+          pip install pillow faker sqlalchemy pytesseract selenium pymysql requests mechanize pycountry country_converter
 
       # Step 6: Replace eng.traineddata with captcha.traineddata
       - name: Replace eng.traineddata with captcha.traineddata
