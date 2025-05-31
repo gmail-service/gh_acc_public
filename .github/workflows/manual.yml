@@ -47,5 +47,12 @@ jobs:
           Copy-Item -Path $source -Destination $dest -Force
 
       # Step 7: Run make.py from the cloned private repository
-      - name: Run make.py
-        run: cmd.exe /c python.exe gh_acc\make.py  # Running the script from the cloned private repo
+#      - name: Run make.py
+#        run: cmd.exe /c python.exe gh_acc\make.py  # Running the script from the cloned private repo
+
+
+- name: Run make.py with UTF-8 Encoding
+  run: |
+    chcp 65001
+    python gh_acc\make.py
+
