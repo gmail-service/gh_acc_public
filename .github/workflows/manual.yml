@@ -51,9 +51,13 @@ jobs:
 #        run: cmd.exe /c python.exe gh_acc\make.py  # Running the script from the cloned private repo
 
 
+
+
       - name: Run make.py with UTF-8 Encoding
         run: |
           chcp 65001
           python gh_acc\make.py
+        env:
+          PYTHONIOENCODING: utf-8
 
 
